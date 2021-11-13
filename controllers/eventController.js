@@ -1,26 +1,28 @@
-module.exports = function (app, models) {
+const Event = require('../db/models/event');
+const moment= require('moment');
+const models = require('../db/models/index');
+
 
     // INDEX
-    app.get('/', (req, res) => {
+    const allEvents = (req, res) => {
         models.Event.findAll({ order: [['createdAt', 'DESC']] }).then(events => {
             res.render('events-index', { events: events });
-        })
-    })
-
-    app.post('/events', (req, res) => {
+        });
+      }
+    const createEvent = (req, res) => {
         models.Event.create(req.body).then(event => {
           res.redirect(`/events/${event.id}`);
         }).catch((err) => {
           console.log(err)
         });
-      })
-      app.get('/events/new', (req, res) => {
+      };
+
+      const getNewEvent = (req, res) => {
         res.render('events-new', {});
-      })
-      // show
-      app.get('/events/:id', (req, res) => {
-        const moment= require('moment') 
-        models.Event.findByPk(req.params.id, { include: [{ model: models.Ticket }] }).then(event => {
+      };
+      
+      const getEvent = (req, res) => {
+          models.Event.findByPk(req.params.id, { include: [{ model: models.Ticket }] }).then(event => {
           let createdAt = event.createdAt;
           createdAt = moment(createdAt).format('MMMM Do YYYY, h:mm:ss a');
           event.createdAtFormatted = createdAt;
@@ -28,17 +30,17 @@ module.exports = function (app, models) {
         }).catch((err) => {
             console.log(err.message);
         })
-    });
+    };
       // edit
-      app.get('/events/:id/edit', (req, res) => {
+     const editEvent = (req, res) => {
         models.Event.findByPk(req.params.id).then((event) => {
           res.render('events-edit', { event: event });
         }).catch((err) => {
           console.log(err.message);
         })
-      });
+      };
       
-      app.put('/events/:id', (req, res) => {
+      const updateEvent = (req, res) => {
         models.Event.findByPk(req.params.id).then(event => {
           event.update(req.body).then(event => {
             res.redirect(`/events/${req.params.id}`);
@@ -48,15 +50,24 @@ module.exports = function (app, models) {
         }).catch((err) => {
           console.log(err);
         });
-      });
+      };
       
-      app.delete('/events/:id', (req, res) => {
+      const deleteEvent = (req, res) => {
         models.Event.findByPk(req.params.id).then(event => {
           event.destroy();
           res.redirect(`/`);
         }).catch((err) => {
           console.log(err);
         });
-      })
-}
+      }
 
+module.exports = {
+  allEvents,
+  createEvent,
+  getNewEvent,
+  getEvent,
+  editEvent,
+  updateEvent,
+  deleteEvent
+
+}
