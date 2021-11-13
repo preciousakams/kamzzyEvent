@@ -1,0 +1,23 @@
+<div class="row mt-4">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>Update Event</h3>
+                </div>
+                <div class="card-text">
+                    <form action="/events/{{event.id}}?_method=PUT" method="post">
+                        {{> events-form }}
+                        <div class="text-right" style="margin-top: 2%;">
+                            <a href="/events/{{event.id}}" class='text-muted mr-2' style="padding: 2%;">Cancel</a>
+                            <button type="submit" class="btn btn-primary " style="float:left" name="button">Update</button>
+                        </div>
+                    </form>
+                    <form action="/events/{{event.id}}?_method=DELETE" method="POST">
+                <button type="submit" class='btn btn-danger' style="float:right">Delete</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

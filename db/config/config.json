@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "user",
+    "password": null,
+    "database": "kamzzyEvent",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "user",
+    "password": null,
+    "database": "eventDB_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+   "dialect": "postgres",
+   "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}

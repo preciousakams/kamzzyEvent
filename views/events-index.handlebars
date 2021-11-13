@@ -1,0 +1,20 @@
+  <div class="row mt-4">
+      <div class="col-lg-6 offset-lg-3" >
+          <h1 style="text-align: center;">Kamzzy's Events</h1>
+          <a href="/events/new" class="btn btn-info">Create Event</a>
+          <h1 style="text-align: center;">Events</h1>
+          {{#each events}}
+    <div class="card mt-3">
+      <img class="card-img-top w-100" src="{{this.imgUrl}}" alt="">
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.desc}}</p>
+        <div class="text-right">
+          <a href="/events/{{this.id}}/tickets/new" class="btn btn-info"style="margin: 2%;">Get A Ticket</a>
+          <a href="/events/{{this.id}}" class="btn btn-primary">View Event</a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+      </div>
+  </div>
