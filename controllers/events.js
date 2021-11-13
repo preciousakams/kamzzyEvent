@@ -17,15 +17,19 @@ module.exports = function (app, models) {
       app.get('/events/new', (req, res) => {
         res.render('events-new', {});
       })
-      
+      // show
       app.get('/events/:id', (req, res) => {
+        const moment= require('moment') 
         models.Event.findByPk(req.params.id, { include: [{ model: models.Ticket }] }).then(event => {
-            res.render('events-show', { event: event });
+          let createdAt = event.createdAt;
+          createdAt = moment(createdAt).format('MMMM Do YYYY, h:mm:ss a');
+          event.createdAtFormatted = createdAt;
+          res.render('events-show', { event: event });
         }).catch((err) => {
             console.log(err.message);
         })
     });
-      
+      // edit
       app.get('/events/:id/edit', (req, res) => {
         models.Event.findByPk(req.params.id).then((event) => {
           res.render('events-edit', { event: event });

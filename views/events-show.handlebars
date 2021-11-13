@@ -4,6 +4,7 @@
     <img class="card-img-fluid w-100 rounded mb-3" src="{{event.dataValues.imgUrl}}" alt="Card image cap">
     <h3 card-title>{{event.dataValues.title}}</h3>
     <div class="lead">{{event.dataValues.desc}}</div>
+   <small class="text-muted">Created on: {{event.createdAtFormatted}}</small>
      <div class="text-right" style="padding-top: 2%;">
       <a href="/events/{{event.dataValues.id}}/edit">Edit Event</a>
     </div>
