@@ -2,10 +2,10 @@
       <div class="col-lg-6 offset-lg-3" >
           <h1 style="text-align: center;">Kamzzy's Events</h1>
           <a href="/events/new" class="btn btn-info">Create Event</a>
-          <h1 style="text-align: center;">Events</h1>
+          <h1 style="text-align: center;">All Events</h1>
           {{#each events}}
     <div class="card mt-3">
-      <img class="card-img-top w-100" src="{{this.imgUrl}}" alt="Flyer will be available soon">
+      <img class="card-img-top w-100" src="{{this.imgUrl}}" alt="Flyer will be available soon" style="max-width: 80%; max-height:62px">
       <div class="card-body">
         <h5 class="card-title">{{this.title}}</h5>
         <p class="card-text">{{this.desc}}</p>
