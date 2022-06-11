@@ -18,14 +18,13 @@ A tool for creating and managing events, with functionalities like:
 * Express JS
 
 
-### Demo Version: [https://lit-coast-94672.herokuapp.com/](https://lit-coast-94672.herokuapp.com/)
+### [Click For Live Version](https://lit-coast-94672.herokuapp.com/)
 ***
 
 ## Getting started
 
 ### Project prerequisite
 * Node Js
-* NPM 
 
 ### Project Setup:
 * Clone the project repository
